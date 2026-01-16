@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./index.css";
+import "./styles.css";
 
 function ScrollImage() {
   const sectionRef = useRef(null);
@@ -20,7 +20,6 @@ function ScrollImage() {
             start: "top top",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
           },
         })
         .to(
