@@ -1,0 +1,39 @@
+.marquee-wrapper{
+    background-color: var(--secondary);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee-fallback{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.marquee-fallback.is-hidden{
+    visibility: hidden;
+}
+
+.marquee-fallback > *{
+    margin-right: 50px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+}
+
+.marquee-live{
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+}
+
+.marquee-live.is-ready{
+    visibility: visible;
+}
+
+.rfm-child{
+    margin-right: 50px;
+    align-items: center;
+    display: flex;
+}
