@@ -65,7 +65,9 @@ function Header() {
             }
         };
 
-        applyClosedWidth();
+        if (!hasInteractedRef.current && !isOpen) {
+            applyClosedWidth();
+        }
         window.addEventListener("resize", applyClosedWidth);
 
         return () => {
