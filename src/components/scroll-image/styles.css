@@ -2,8 +2,13 @@
     height: 100vh;
 }
 
-.h-50{
-    height: 50vh;
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    margin-top: 15rem;
+    color: white;
 }
 
 .scroll-images-section{
@@ -29,4 +34,54 @@
 
 .images-container img:nth-child(1){
     z-index: 3;
+}
+
+.title-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.title-page h2{
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: Great-Sailor;
+}
+
+.introduction > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-dark{
+    margin: 0 5px;
+    padding: 10px 15px;
+    background-color: var(--dark-btn-background);
+}
+
+.btn-dark-bg-1{
+    border-radius: 36px;
+}
+
+.btn-dark-bg-2{
+    border-radius: 10px;
+}
+
+@media screen and (max-width : 1650px) {
+    .title-page{
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+
+    .title-page h2{
+        margin: 0;
+        text-align: center;
+    }
+
+    .title-page img{
+        order: 3;
+    }
 }

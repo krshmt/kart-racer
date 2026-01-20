@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@font-face {
+  font-family: Great-Sailor;
+  src: url(/fonts/Great\ Sailor.otf) format("opentype");
+}
 
 :root{
   font-family: "Poppins", sans-serif;
