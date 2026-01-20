@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaskItem, MaskText } from "../../animations/masktext";
+import Copy from "../../animations/Copy";
 import "./styles.css";
 
 const TITLE_LINE_ONE = "plus qu'un tour";
@@ -102,12 +103,35 @@ function ScrollImage() {
       </div>
       <div className="scroll-images-section" ref={sectionRef}>
         <div className="images-container" ref={containerRef}>
-          <img src="/images/image-2.png" alt="" />
-          <img ref={imageRightRef} src="/images/image-3.png" alt="" />
-          <img ref={imageLeftRef} src="/images/image-4.png" alt="" />
+          <img src="/images/image-3.jpg" alt="" />
+          <img ref={imageRightRef} src="/images/image-2.jpg" alt="" />
+          <img ref={imageLeftRef} src="/images/image-1.jpg" alt="" />
         </div>
       </div>
-      <div className="h-50"></div>
+      <div className="description-kart">
+        <div>
+          <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+          <p>Plus de 500 mètres de pur frisson vous attendent, entre accélérations franches, virages en épingle et lignes droites rapides. Large et entièrement sécurisée, la piste permet des dépassements audacieux et des sensations fortes. Chronométrez vos performances en temps réel grâce aux écrans de contrôle.</p>
+          <p>Record du tour : <span className="btn-light btn-light-bg-2"> 33,862 sec</span></p>
+          </Copy>
+        </div>
+      </div>
+      <div className="video-presentation">
+        <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+          <p>voir</p>
+        </Copy>
+        <div className="video-overlay">
+          <div className="overlay">
+            <MaskText as="p" text="KartRacer" />
+            <MaskText as="p" text="00:47" />
+          </div>          
+          <a href="https://www.facebook.com/100057433178868/videos/-cest-parti-pour-les-vacances-notre-piste-de-karting-est-ouverte-tous-les-jours-/1187930886243673/" target="_blank" rel="noopener noreferrer"><video autoPlay muted loop src="/video/karting.mp4"></video></a>
+        </div>
+        <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+          <p>reel</p>
+        </Copy>
+      </div>
+      <div className="h-100"></div>
     </>
   );
 }

@@ -1,11 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+@font-face {
+  font-family: HafferXH;
+  src: url(/fonts/haffer-font-family-1768877273-0/Haffer-TRIAL-Regular.otf) format("opentype");
+}
+
 @font-face {
   font-family: Great-Sailor;
   src: url(/fonts/Great\ Sailor.otf) format("opentype");
 }
 
 :root{
-  font-family: "Poppins", sans-serif;
+  font-family: "HafferXH", sans-serif;
   --dark-background: #201D1D;
   --light-background: #E9E9E9;
   --main: #6840FF;
