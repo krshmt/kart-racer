@@ -1,0 +1,136 @@
+.h-25{
+    height: 25vh;
+}
+
+.carrousel-controller{
+    margin-top: 5rem;
+    padding: 5rem 0;
+    background-color: #434343;
+}
+
+.controller{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.controller-btn{
+    padding: 10px 15px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-radius 200ms, background-color 200ms;
+}
+
+.controller-btn:nth-child(1){
+    background-color: var(--dark-background);
+    color: white;
+    border-radius: 20px;
+}
+
+.controller-btn:nth-child(2){
+    background-color: var(--dark-background);
+    color: white;
+    border-radius: 20px;
+}
+
+.controller-btn:nth-child(3){
+    background-color: var(--dark-background);
+    color: white;
+    border-radius: 20px;
+}
+
+.controller-btn.is-active{
+    background-color: var(--main);
+    color: white;
+    border-radius: 10px;
+}
+
+.carrousel{
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 1rem 0 3rem;
+}
+
+.card-group{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    will-change: transform, opacity;
+}
+
+.card-group.active{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.card-group.enter-right{
+    animation: slideInFromRight 450ms linear forwards;
+}
+
+.card-group.exit-left{
+    animation: slideOutToLeft 450ms linear forwards;
+    pointer-events: none;
+}
+
+@keyframes slideInFromRight{
+    0%{
+        transform: translate(130%, 40%) rotate(18deg) scale(0.92);
+        opacity: 0;
+    }
+    20%{
+        transform: translate(100%, 30%) rotate(14deg) scale(0.94);
+        opacity: 0.3;
+    }
+    40%{
+        transform: translate(70%, 18%) rotate(10deg) scale(0.96);
+        opacity: 0.6;
+    }
+    60%{
+        transform: translate(40%, 8%) rotate(6deg) scale(0.98);
+        opacity: 0.85;
+    }
+    80%{
+        transform: translate(15%, 2%) rotate(2deg) scale(0.99);
+        opacity: 0.95;
+    }
+    100%{
+        transform: translate(0, 0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToLeft{
+    0%{
+        transform: translate(0, 0) rotate(0) scale(1);
+        opacity: 1;
+    }
+    20%{
+        transform: translate(-15%, 2%) rotate(-2deg) scale(0.99);
+        opacity: 0.95;
+    }
+    40%{
+        transform: translate(-40%, 8%) rotate(-6deg) scale(0.98);
+        opacity: 0.85;
+    }
+    60%{
+        transform: translate(-70%, 18%) rotate(-10deg) scale(0.96);
+        opacity: 0.6;
+    }
+    80%{
+        transform: translate(-100%, 30%) rotate(-14deg) scale(0.94);
+        opacity: 0.3;
+    }
+    100%{
+        transform: translate(-130%, 40%) rotate(-18deg) scale(0.92);
+        opacity: 0;
+    }
+}

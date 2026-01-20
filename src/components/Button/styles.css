@@ -51,7 +51,7 @@
         &:nth-of-type(2){
             position: absolute;
             transform-origin: bottom center;
-            transform: rotateX(-90deg) translateY(13px);
+            transform: rotateX(-90deg) translateY(10px);
             opacity: 0;
         }
     }

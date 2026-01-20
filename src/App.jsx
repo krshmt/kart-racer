@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ScrollImage from './components/scroll-image/scroll-image'
+import Home from './pages/home'
 import Header from './components/header/header'
 import './App.css'
 
@@ -10,7 +10,7 @@ function App() {
     <>
       <div>
         <Header />
-        <ScrollImage />
+        <Home></Home>
       </div>
     </>
   )

@@ -131,7 +131,6 @@ function ScrollImage() {
           <p>reel</p>
         </Copy>
       </div>
-      <div className="h-100"></div>
     </>
   );
 }
