@@ -47,18 +47,19 @@ function ScrollImage() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "bottom bottom",
+            end: "bottom 50%",
             scrub: true,
+            markers: true
           },
         })
         .to(
           imageRightRef.current,
-          { left: "70%", rotation: 8, ease: "none" },
+          { left: "80%", rotation: 8, ease: "none" },
           0
         )
         .to(
           imageLeftRef.current,
-          { left: "30%", rotation: -8, ease: "none" },
+          { left: "20%", rotation: -8, ease: "none" },
           0
         )
         .to(bgTargets, { backgroundColor: lightBg, ease: "none" }, 0);
