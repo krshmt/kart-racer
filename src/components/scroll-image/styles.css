@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
     margin-top: 15rem;
     color: white;
 }
@@ -226,7 +225,11 @@
         height: 60vh;
     }
     .video-presentation > p{
-        font-size: 3.5rem;
+        font-size: 3rem;
+    }
+    .video-presentation video, .overlay{
+        width: 350px;
+        height: 200px;
     }
 }
 
@@ -247,5 +250,32 @@
     .video-presentation video, .overlay{
         width: 300px;
         height: 200px;
+    }
+}
+
+@media screen and (max-width : 550px){
+    .video-presentation p{
+        display: none;
+    }
+    
+    .title-page h2{
+        font-size: 2rem;
+    }
+
+    .introduction div:nth-child(1){
+        flex-wrap: wrap;
+    }
+
+    .scroll-images-section{
+        height: 105vh;
+    }
+
+    .images-container{
+        height: 40vh;
+    }
+
+    .images-container img{
+        width: 200px;
+        height: 150px;
     }
 }
