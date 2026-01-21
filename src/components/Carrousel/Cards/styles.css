@@ -1,6 +1,91 @@
 .card{
     height: 100%;
-    width: 400px;
-    border: 1px solid #000;
-    background-color: aquamarine
+    min-width: 350px;
+    width: 25rem;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+}
+
+.adult-card span{
+    font-family: HafferXH-Light;
+}
+
+.adult-requirements{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adult-requirements > span{
+    text-transform: uppercase;
+    padding: 0.25rem;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.requirements > span{
+    padding: 0.25rem;
+    border-radius: 5px;
+}
+
+.blue-bg > span:nth-child(odd){
+    background-color: var(--main);
+    color: #fff;
+}
+
+.blue-bg > span:nth-child(even){
+    background-color: var(--light-btn-background);
+}
+
+.card-title h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 1rem 0;
+}
+
+.price{
+    margin-bottom: 0.75rem;
+}
+
+.price h4{
+    font-size: 1.25rem;
+    margin-top: 0.65rem;
+    font-weight: 400;
+}
+
+.duration{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.duration-minute span{
+    padding: 0.2rem;
+    background-color: var(--light-btn-background);
+}
+
+.duration-minute span:nth-child(1){
+    border-radius: 5px;
+}
+
+.duration-minute span:nth-child(2){
+    border-radius: 10px;
+}
+
+.line{
+    width: 100%;
+}
+
+.line div{
+    width: 100%;
+    height: 1px;
+    background-color: var(--light-btn-background);
+}
+
+.session-amount{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

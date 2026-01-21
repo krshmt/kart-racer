@@ -6,6 +6,11 @@
 }
 
 @font-face {
+  font-family: HafferXH-Light;
+  src: url(/fonts/haffer-font-family-1768877273-0/Haffer-TRIAL-Light.otf) format("opentype");
+}
+
+@font-face {
   font-family: Great-Sailor;
   src: url(/fonts/Great\ Sailor.otf) format("opentype");
 }

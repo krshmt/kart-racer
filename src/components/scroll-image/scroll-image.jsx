@@ -49,7 +49,6 @@ function ScrollImage() {
             start: "top top",
             end: "bottom 50%",
             scrub: true,
-            markers: true
           },
         })
         .to(
