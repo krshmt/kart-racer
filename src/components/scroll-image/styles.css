@@ -272,6 +272,7 @@
 
     .images-container{
         height: 40vh;
+        top: 10%;
     }
 
     .images-container img{
