@@ -126,7 +126,7 @@ function ScrollImage() {
             <MaskText as="p" text="KartRacer" />
             <MaskText as="p" text="00:47" />
           </div>          
-          <a href="https://www.facebook.com/100057433178868/videos/-cest-parti-pour-les-vacances-notre-piste-de-karting-est-ouverte-tous-les-jours-/1187930886243673/" target="_blank" rel="noopener noreferrer"><video autoPlay muted loop src="/video/karting.mp4"></video></a>
+          <a href="https://www.facebook.com/100057433178868/videos/-cest-parti-pour-les-vacances-notre-piste-de-karting-est-ouverte-tous-les-jours-/1187930886243673/" target="_blank" rel="noopener noreferrer"><video autoPlay muted loop playsInline webkit-playsinline="true" src="/video/karting.mp4"></video></a>
         </div>
         <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
           <p>reel</p>

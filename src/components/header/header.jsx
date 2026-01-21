@@ -22,7 +22,11 @@ function Header() {
     const entryTweenRef = useRef(null);
     const [panelsHeight, setPanelsHeight] = useState(0);
     const marqueeHeightRef = useRef(0);
-    const getClosedWidth = () => (window.innerWidth < 950 ? "70vw" : "50vw");
+    const getClosedWidth = () => {
+        if (window.innerWidth < 700) return "85vw";
+        if (window.innerWidth < 950) return "70vw";
+        return "50vw";
+    };
 
     useLayoutEffect(() => {
         const container = containerRef.current;
