@@ -73,8 +73,8 @@ function Carrousel() {
             <div className={`card-group ${theme} ${extraClass || ""}`.trim()}>
                 {theme === "adult" && (
                     <>
-                        <AdultCard />
                         <AdultNoCard />
+                        <AdultCard />
                     </>
                 )}
                 {theme === "enfant" && <TeenagerCard />}

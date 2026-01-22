@@ -86,6 +86,14 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
+
+    .card-group.enfant, .card-group.formules{
+        align-items: start;
+    }
+
+    .carrousel{
+        min-height: 1100px;
+    }
 }
 
 @keyframes slideInFromRight{

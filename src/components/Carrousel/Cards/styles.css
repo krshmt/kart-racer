@@ -1,10 +1,90 @@
 .card{
     height: 100%;
     min-width: 350px;
-    width: 25rem;
+    width: 30rem;
+    box-sizing: border-box;
     background-color: white;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     border-radius: 15px;
+}
+
+.fond-blue{
+    background-color: var(--main);
+    color: #fff;
+}
+
+.fond-dark{
+    background-color: var(--dark-background);
+    color: #fff;
+    width: 35rem;
+    max-height: 600px;
+}
+
+.formule-card{
+    background-color: var(--dark-background);
+    color: #fff;
+    width: 35rem;
+}
+
+.formule-card .requirements span:first-child, .formule-card .price span:nth-child(3), .formule-card .savoir-title span:nth-child(3), .formule-card .avantage:first-child span{
+    background-color: var(--main) !important;
+    color: rgb(255, 255, 255);
+}
+
+.formule-card span{
+    background-color: var(--dark-btn-background) !important;
+}
+
+.formule-card .duration-minute{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.formule-card .duration-minute span{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+
+.formule-card .price{
+    margin-bottom: 2rem;
+}
+
+.formule-card .duration{
+    flex-direction: column-reverse;
+}
+
+.formule-card .price:last-child{
+    margin-bottom: 5rem;
+}
+
+.formule-card .savoir-title{
+    margin-bottom: 1rem;
+}
+
+.fond-dark span{
+    background-color: var(--dark-btn-background) !important;
+}
+
+.fond-dark .requirements span:first-child, .fond-dark .price span:nth-child(3), .fond-dark .savoir-title span:nth-child(3), .fond-dark .avantage:first-child span{
+    background-color: var(--main) !important;
+    color: rgb(255, 255, 255);
+}
+
+.fond-dark .avantage:nth-child(2) span, .fond-dark .avantage:nth-child(3) span{
+    background-color: var(--secondary) !important;
+    color: black;
+}
+
+.fond-blue span{
+    color: var(--dark-background);
+}
+
+.fond-blue .requirements span:first-child, .fond-blue .price span:nth-child(3), .fond-blue .savoir-title span:nth-child(3), .fond-blue .avantage:first-child span{
+    background-color: var(--secondary) !important;
+    color: black;
 }
 
 .adult-card span{
@@ -40,13 +120,17 @@
 }
 
 .card-title h3{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 400;
-    margin: 1rem 0;
+    margin: 2.5rem 0;
 }
 
 .price{
     margin-bottom: 0.75rem;
+}
+
+.price:last-child{
+    margin-bottom: 1.5rem;
 }
 
 .price h4{
@@ -61,17 +145,27 @@
     align-items: center;
 }
 
-.duration-minute span{
-    padding: 0.2rem;
-    background-color: var(--light-btn-background);
+.duration-minute{
+    flex-wrap: nowrap;
 }
 
-.duration-minute span:nth-child(1){
+.duration-minute span, .savoir-title > span{
+    padding: 0.2rem;
+    background-color: var(--light-btn-background);
+    white-space: nowrap;
+}
+
+.duration-minute span:nth-child(odd){
     border-radius: 5px;
 }
 
-.duration-minute span:nth-child(2){
+.duration-minute span:nth-child(even){
     border-radius: 10px;
+}
+
+.duration-minute span:nth-child(3){
+    background-color: var(--main);
+    color: #fff;
 }
 
 .line{
@@ -88,4 +182,61 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.savoir-title span{
+    border-radius: 5px;
+}
+
+.en-savoir-plus h4{
+    font-family: HafferXH-Light;
+    margin-bottom: 1rem;
+}
+
+.savoir-title > span:last-child{
+    background-color: var(--main);
+    color: #fff;
+}
+
+.avantage{
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.avantage span{
+    padding: 0.2rem;
+    background-color: var(--light-btn-background);
+    border-radius: 2px;
+}
+
+.avantage p{
+    font-family: HafferXH-Light;
+    margin: 0.5rem 0;
+}
+
+.avantage:first-child span{
+    background-color: var(--main);
+    color: #fff;
+}
+
+@media screen and (max-width : 1100px){
+    .card{
+        width: 30rem;
+    }
+}
+
+@media screen and (max-width : 600px){
+    .card > *{
+        font-size: 80% !important;
+    }
+
+    .card{
+        width: 20rem;
+    }
+
+    .price h4{
+        font-size: 1rem;
+        margin: 0.5rem 0;
+    }
 }
