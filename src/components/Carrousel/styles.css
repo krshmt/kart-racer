@@ -13,37 +13,37 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 5rem;
+    position: relative;
 }
 
 .controller-btn{
     padding: 10px 15px;
     cursor: pointer;
     user-select: none;
-    transition: border-radius 200ms, background-color 200ms;
-}
-
-.controller-btn:nth-child(1){
-    background-color: var(--dark-background);
     color: white;
     border-radius: 20px;
-}
-
-.controller-btn:nth-child(2){
-    background-color: var(--dark-background);
-    color: white;
-    border-radius: 20px;
-}
-
-.controller-btn:nth-child(3){
-    background-color: var(--dark-background);
-    color: white;
-    border-radius: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .controller-btn.is-active{
-    background-color: var(--main);
+    background-color: transparent;
     color: white;
     border-radius: 10px;
+}
+
+.controller-indicator{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: var(--main);
+    border-radius: 10px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, width, height;
 }
 
 .carrousel{
@@ -92,7 +92,7 @@
     }
 
     .carrousel{
-        min-height: 1100px;
+        min-height: 1200px;
     }
 }
 
