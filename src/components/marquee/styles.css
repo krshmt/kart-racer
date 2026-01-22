@@ -1,5 +1,5 @@
 .marquee-wrapper{
-    background-color: var(--secondary);
+    background-color: var(--main);
     border-radius: 5px;
     position: relative;
     overflow: hidden;
