@@ -64,7 +64,7 @@ function AdultNoCard(){
             </div>
             <div className="en-savoir-plus">
                 <div className="savoir-title">
-                    <span>En</span><span>savoir plus</span><span>Carte Assez Piste</span>
+                    <span>En</span><span>savoir plus</span><span>Carte Accès Piste</span>
                 </div>
                 <h4>Pourquoi prendre l'accès piste ?</h4>
                 <div className="avantages">
