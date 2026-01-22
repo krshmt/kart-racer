@@ -24,7 +24,6 @@
     background-color: var(--dark-background);
     color: #fff;
     width: 35rem;
-    max-height: 600px;
 }
 
 .formule-card .requirements span:first-child, .formule-card .price span:nth-child(3), .formule-card .savoir-title span:nth-child(3), .formule-card .avantage:first-child span{
@@ -58,7 +57,7 @@
 }
 
 .formule-card .price:last-child{
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .formule-card .savoir-title{
