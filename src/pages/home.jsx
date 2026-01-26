@@ -7,7 +7,6 @@ function Home() {
         <>
             <ScrollImage />
             <Carrousel />
-            <div className="h-25"></div>
         </>
     );
 }

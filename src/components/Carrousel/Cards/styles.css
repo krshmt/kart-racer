@@ -224,6 +224,7 @@
     .card{
         width: 30rem;
         border-radius: 0;
+        height: auto;
     }
 }
 
@@ -234,6 +235,7 @@
 
     .card{
         width: 20rem;
+        height: auto;
     }
 
     .price h4{
