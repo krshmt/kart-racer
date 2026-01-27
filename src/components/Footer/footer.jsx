@@ -348,7 +348,7 @@ function Footer() {
             <div className="footer-horaire-map">
                 <div className="footer-horaire">
                     <div>
-                        <h3>PrÃªt Ã  tenter l'expÃ©rience</h3>
+                        <h3>Prêt à tenter l'expérience</h3>
                         <p>Nous vous accueillons</p>
                         <div className="horaires-list">
                             {horaires.map(({ jour, heure }) => (
