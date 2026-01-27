@@ -11,6 +11,12 @@
 }
 
 @font-face {
+  font-family: HafferXH-Bold;
+  src: url(/fonts/haffer-font-family-1768877273-0/Haffer-TRIAL-Bold.otf) format("opentype");
+}
+
+
+@font-face {
   font-family: Great-Sailor;
   src: url(/fonts/Great\ Sailor.otf) format("opentype");
 }
