@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
+import { Link } from "react-router-dom";
 import "./styles.css";
 import Button from "../Button/Button";
 import Menu from "../Menu/menu";
@@ -215,6 +216,10 @@ function Header() {
         setIsOpen((prev) => !prev);
     };
 
+    const handleNavClick = () => {
+        setIsOpen(false);
+    };
+
     return (
         <header>
             <div
@@ -233,12 +238,16 @@ function Header() {
                 <div className={`header-container${panelsOpen ? " is-open" : ""}`}>
                     <div className="header-bar">
                         <Menu isActive={isOpen} toggleMenu={toggleMenu} />
-                        <img src="./images/image-1.png" alt="" />
+                        <Link to={"/"}><img src="/images/image-1.png" alt="" /></Link>
                         <Button />
                     </div>
                     <div className="header-panels-wrap">
                         <div className="header-panels" ref={panelsRef}>
-                            <div className="header-panel">Bloc 1</div>
+                            <div className="header-panel">
+                                <Link to="/description" onClick={handleNavClick}>
+                                    Test
+                                </Link>
+                            </div>
                             <div className="header-panel">Bloc 2</div>
                             <div className="header-panel">Bloc 3</div>
                         </div>

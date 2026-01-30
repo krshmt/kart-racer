@@ -17,7 +17,7 @@ header{
     opacity: 0;
     visibility: hidden;
     display: none;
-    z-index: 9;
+    z-index: 1;
 }
 
 .header-stack{
@@ -28,6 +28,8 @@ header{
     width: 50vw;
     box-sizing: border-box;
     overflow: hidden;
+    position: relative;
+    z-index: 2;
 }
 
 .header-container{
