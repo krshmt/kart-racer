@@ -1,11 +1,11 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-import { Link } from "react-router-dom";
 import "./styles.css";
 import Button from "../Button/Button";
 import Menu from "../Menu/menu";
 import MarqueeComponent from "../marquee/marquee";
+import TransitionLink from "../TransitionLink/transition-link";
 
 gsap.registerPlugin(CustomEase);
 const easeInOut = CustomEase.create("headerEase", "0.625, 0.05, 0, 1");
@@ -238,15 +238,17 @@ function Header() {
                 <div className={`header-container${panelsOpen ? " is-open" : ""}`}>
                     <div className="header-bar">
                         <Menu isActive={isOpen} toggleMenu={toggleMenu} />
-                        <Link to={"/"}><img src="/images/image-1.png" alt="" /></Link>
+                        <TransitionLink to={"/"}>
+                            <img src="/images/image-1.png" alt="" />
+                        </TransitionLink>
                         <Button />
                     </div>
                     <div className="header-panels-wrap">
                         <div className="header-panels" ref={panelsRef}>
                             <div className="header-panel">
-                                <Link to="/description" onClick={handleNavClick}>
+                                <TransitionLink to="/description" onClick={handleNavClick}>
                                     Test
-                                </Link>
+                                </TransitionLink>
                             </div>
                             <div className="header-panel">Bloc 2</div>
                             <div className="header-panel">Bloc 3</div>
