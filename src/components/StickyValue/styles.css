@@ -98,3 +98,31 @@
 .value-item p{
     flex-basis: 70%;
 }
+
+@media screen and (max-width: 1200px) {
+    .logo{
+        display: none;
+    }
+
+    .values{
+        flex-basis: 100%;
+        margin: 0 5rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .values h2{
+        font-size: 3rem;
+    }
+
+    .logo-value{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .values{
+        flex-basis: 100%;
+        margin: 0 1rem;
+    }
+}
