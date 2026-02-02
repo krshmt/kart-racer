@@ -225,7 +225,7 @@ export default function ScrollShowcase() {
                 ref={(el) => (cardsRef.current[i] = el)}
                 style={{ top: pos.top, left: pos.left }}
               >
-                <img src={`/src/assets/img${i + 1}.jpg`} alt="" />
+                <img src={`/images/img${i + 1}.jpg`} alt="" />
               </div>
             ))}
           </div>
