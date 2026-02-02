@@ -41,11 +41,13 @@ export default function ScrollShowcase() {
   useEffect(() => {
     // 🔥 Lenis
     const lenis = new Lenis();
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
+    const handleLenisScroll = () => ScrollTrigger.update();
+    const handleLenisRaf = (time) => {
       lenis.raf(time * 1000);
-    });
+    };
+
+    lenis.on("scroll", handleLenisScroll);
+    gsap.ticker.add(handleLenisRaf);
     gsap.ticker.lagSmoothing(0);
 
     const updateMoveDistance = () => {
@@ -164,6 +166,8 @@ export default function ScrollShowcase() {
     return () => {
       window.removeEventListener("resize", handleResize);
       trigger.kill();
+      gsap.ticker.remove(handleLenisRaf);
+      lenis.off("scroll", handleLenisScroll);
       lenis.destroy();
     };
   }, []);

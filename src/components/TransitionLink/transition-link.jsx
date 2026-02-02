@@ -1,15 +1,35 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { playExitFade } from "../../animations/page-transition";
 
 const isModifiedClick = (event) =>
   event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
+const normalizePathname = (pathname) => {
+  if (!pathname) {
+    return "";
+  }
+  return pathname.split(/[?#]/)[0] || "";
+};
+
 const getToPathname = (to) => {
   if (typeof to === "string") {
-    return to;
+    return normalizePathname(to);
   }
-  return to?.pathname || "";
+  return normalizePathname(to?.pathname || "");
+};
+
+const resetScrollPosition = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  const lenis = window.lenis;
+  if (lenis && typeof lenis.scrollTo === "function") {
+    lenis.scrollTo(0, { immediate: true });
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 };
 
 function TransitionLink({ to, onClick, children, ...rest }) {
@@ -17,8 +37,9 @@ function TransitionLink({ to, onClick, children, ...rest }) {
   const location = useLocation();
   const isTransitioningRef = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     isTransitioningRef.current = false;
+    resetScrollPosition();
   }, [location.pathname]);
 
   const handleClick = useCallback(
@@ -36,7 +57,9 @@ function TransitionLink({ to, onClick, children, ...rest }) {
       }
 
       const targetPath = getToPathname(to);
-      if (targetPath && targetPath === location.pathname) {
+      const currentPath = normalizePathname(location.pathname);
+
+      if (targetPath && targetPath === currentPath) {
         event.preventDefault();
         return;
       }
@@ -48,7 +71,11 @@ function TransitionLink({ to, onClick, children, ...rest }) {
       }
 
       isTransitioningRef.current = true;
-      await playExitFade();
+      const isGoingHome = targetPath === "/" && currentPath !== "/";
+      const isLeavingHome = currentPath === "/" && targetPath && targetPath !== "/";
+      const background = isLeavingHome ? "light" : isGoingHome ? "dark" : undefined;
+
+      await playExitFade({ background });
       navigate(to);
     },
     [location.pathname, navigate, onClick, to],
