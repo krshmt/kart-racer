@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import "./styles.css";
@@ -14,6 +14,8 @@ function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [panelsOpen, setPanelsOpen] = useState(false);
     const containerRef = useRef(null);
+    const headerContainerRef = useRef(null);
+    const headerBarRef = useRef(null);
     const panelsRef = useRef(null);
     const overlayRef = useRef(null);
     const marqueeRef = useRef(null);
@@ -22,12 +24,37 @@ function Header() {
     const timelineRef = useRef(null);
     const entryTweenRef = useRef(null);
     const [panelsHeight, setPanelsHeight] = useState(0);
+    const [baseHeight, setBaseHeight] = useState(0);
     const marqueeHeightRef = useRef(0);
     const getClosedWidth = () => {
         if (window.innerWidth < 700) return "85vw";
         if (window.innerWidth < 950) return "70vw";
         return "50vw";
     };
+
+    const measureBaseHeight = useCallback(() => {
+        const headerContainer = headerContainerRef.current;
+        const headerBar = headerBarRef.current;
+        if (!headerContainer || !headerBar) {
+            return;
+        }
+        const styles = getComputedStyle(headerContainer);
+        const paddingTop = Number.parseFloat(styles.paddingTop) || 0;
+        const paddingBottom = Number.parseFloat(styles.paddingBottom) || 0;
+        const barHeight = headerBar.getBoundingClientRect().height || 0;
+        const nextHeight = Math.ceil(barHeight + paddingTop + paddingBottom);
+        if (nextHeight && nextHeight !== baseHeight) {
+            setBaseHeight(nextHeight);
+        }
+    }, [baseHeight]);
+
+    useLayoutEffect(() => {
+        measureBaseHeight();
+        window.addEventListener("resize", measureBaseHeight);
+        return () => {
+            window.removeEventListener("resize", measureBaseHeight);
+        };
+    }, [measureBaseHeight]);
 
     useLayoutEffect(() => {
         const container = containerRef.current;
@@ -233,24 +260,54 @@ function Header() {
                 ref={containerRef}
                 style={{
                     "--panels-max-height": panelsHeight ? `${panelsHeight}px` : "0px",
+                    "--header-base-height": baseHeight ? `${baseHeight}px` : undefined,
                 }}
             >
-                <div className={`header-container${panelsOpen ? " is-open" : ""}`}>
-                    <div className="header-bar">
+                <div
+                    className={`header-container${panelsOpen ? " is-open" : ""}`}
+                    ref={headerContainerRef}
+                >
+                    <div className="header-bar" ref={headerBarRef}>
                         <Menu isActive={isOpen} toggleMenu={toggleMenu} />
                         <TransitionLink to={"/"}>
-                            <img src="/images/image-1.png" alt="" />
+                            <img src="/images/image-1.png" alt="" onLoad={measureBaseHeight} />
                         </TransitionLink>
                         <Button />
                     </div>
                     <div className="header-panels-wrap">
                         <div className="header-panels" ref={panelsRef}>
                             <div className="header-panel">
-                                <TransitionLink to="/description" onClick={handleNavClick}>
-                                    Test
-                                </TransitionLink>
+                                <p>NOS PAGES</p>
+                                <div>
+                                    <TransitionLink to="/description" onClick={handleNavClick}>
+                                    Accueil
+                                    </TransitionLink>
+                                </div>
+                                <div>
+                                    <TransitionLink to="/description" onClick={handleNavClick}>
+                                    Description
+                                    </TransitionLink>
+                                </div>
+                                <div>
+                                    <TransitionLink to="/description" onClick={handleNavClick}>
+                                    A venir
+                                    </TransitionLink>
+                                </div>
+                                <div>
+                                    <TransitionLink to="/description" onClick={handleNavClick}>
+                                    A venir
+                                    </TransitionLink>
+                                </div>
                             </div>
-                            <div className="header-panel">Bloc 2</div>
+                            <div className="header-panel">
+                                <p>NOUS SUIVRE</p>
+                                <div>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Instagram</a>
+                                </div>
+                                <div>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Facebook</a>
+                                </div>
+                            </div>
                             <div className="header-panel">Bloc 3</div>
                         </div>
                     </div>
