@@ -1,0 +1,128 @@
+.scroll-showcase,
+.scroll-showcase * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.scroll-showcase {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "F37 Judge";
+}
+
+.scroll-showcase .images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scroll-showcase section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scroll-showcase h1 {
+  text-transform: uppercase;
+  font-size: 4vw;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.scroll-showcase .sticky {
+  background-color: #e9e9e9;
+}
+
+.scroll-showcase .titles {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 400vw;
+  height: 100vh;
+  display: flex;
+  will-change: transform;
+}
+
+.scroll-showcase .title {
+  position: relative;
+  flex: 0 0 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-showcase .title h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 9vw;
+  font-style: italic;
+  will-change: transform;
+}
+
+.scroll-showcase .title .block-line-wrapper {
+  position: relative;
+  display: block;
+  width: max-content;
+}
+
+.scroll-showcase .title .block-line {
+  position: relative;
+  display: block;
+}
+
+.scroll-showcase .title .block-revealer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 101%;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+
+.scroll-showcase h1.title-1 {
+  color: #dafa6c;
+}
+
+.scroll-showcase h1.title-2 {
+  color: #10d0f4;
+}
+
+.scroll-showcase h1.title-3 {
+  color: #1f1f1f;
+}
+
+.scroll-showcase .images {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200vw;
+  height: 200vh;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  z-index: -1;
+}
+
+.scroll-showcase .card {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 2em;
+  background: #c0c0c0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .scroll-showcase .titles {
+    gap: 12vw;
+    padding-inline: 8vw;
+  }
+}
