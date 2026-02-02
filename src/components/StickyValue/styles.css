@@ -18,9 +18,25 @@
     position: relative;
 }
 
-.logo img{
+.logo-reveal{
     position: sticky;
     top: var(--stack-top, 8.5rem);
+    display: inline-block;
+}
+
+.logo img{
+    display: block;
+}
+
+.logo .block-revealer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
 }
 
 .values{
@@ -31,6 +47,28 @@
     font-size: 4rem;
     margin: 0;
     margin-bottom: 2rem;
+}
+
+.values .block-line-wrapper{
+    position: relative;
+    display: block;
+    width: max-content;
+}
+
+.values .block-line-wrapper > *{
+    position: relative;
+    display: block;
+}
+
+.values .block-revealer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
 }
 
 .list-values{

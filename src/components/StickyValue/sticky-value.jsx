@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Copy from "../../animations/Copy";
 import "./styles.css";
 
 const values = [
@@ -27,7 +28,11 @@ const values = [
 ];
 
 function StickyValue() {
+  const containerRef = useRef(null);
   const listRef = useRef(null);
+  const imageWrapRef = useRef(null);
+  const imageRef = useRef(null);
+  const imageBlockRef = useRef(null);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -103,28 +108,69 @@ function StickyValue() {
         );
       });
 
+      const imageWrap = imageWrapRef.current;
+      const image = imageRef.current;
+      const imageBlock = imageBlockRef.current;
+
+      if (imageWrap && image && imageBlock) {
+        imageBlock.style.backgroundColor = "var(--main)";
+
+        gsap.set(image, { autoAlpha: 0 });
+        gsap.set(imageBlock, { scaleX: 0, transformOrigin: "left center" });
+
+        const imageTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: imageWrap,
+            start: "top 90%",
+            once: true,
+          },
+        });
+
+        imageTl.to(imageBlock, {
+          scaleX: 1,
+          duration: 0.45,
+          ease: "power4.inOut",
+        });
+        imageTl.set(image, { autoAlpha: 1 });
+        imageTl.set(imageBlock, { transformOrigin: "right center" });
+        imageTl.to(imageBlock, {
+          scaleX: 0,
+          duration: 0.45,
+          ease: "power4.inOut",
+        });
+      }
+
       ScrollTrigger.refresh();
 
       return () => {
         ScrollTrigger.removeEventListener("refreshInit", layoutStack);
       };
-    }, listRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="logo-value">
+    <div className="logo-value" ref={containerRef}>
       <div className="logo">
-        <img src="/images/image-7.png" alt="" />
+        <div className="logo-reveal" ref={imageWrapRef}>
+          <img ref={imageRef} src="/images/image-7.png" alt="" />
+          <div className="block-revealer" ref={imageBlockRef} />
+        </div>
       </div>
       <div className="values">
-        <h2>Un parc entièrement renouvelé régulièrement vous accueille entre amis ou en famille</h2>
+        <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+          <h2>Un parc entièrement renouvelé régulièrement vous accueille entre amis ou en famille</h2>
+        </Copy>
         <div className="list-values" ref={listRef}>
           {values.map((value, idx) => (
             <div className="value-item" key={idx}>
-              <h3 className="value-title">{value.title}</h3>
-              <p>{value.content}</p>
+              <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+                <h3 className="value-title">{value.title}</h3>
+              </Copy>
+              <Copy blockColor="var(--main)" stagger={0.05} duration={0.4}>
+                <p>{value.content}</p>
+              </Copy>
             </div>
           ))}
         </div>
