@@ -34,5 +34,5 @@
 html,
 body{
   margin: 0;
-  background-color: var(--dark-background);
+  background-color: var(--light-background);
 }
