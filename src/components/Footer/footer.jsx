@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
+import TransitionLink from "../TransitionLink/transition-link";
 import "./styles.css";
 
 const horaires = [
@@ -368,10 +369,10 @@ function Footer() {
                 <div className="footer-content">
                     <div>
                         <h4>Notre site</h4>
-                        <p>Accueil</p>
-                        <p>Notre complexe</p>
-                        <p>Tarifs</p>
-                        <p>Mentions légales</p>
+                        <TransitionLink to={"/"}>Accueil</TransitionLink>
+                        <p>Notre complexe (A venir)</p>
+                        <p>Tarifs (A venir)</p>
+                        <p>Mentions légales (A venir)</p>
                     </div>
                     <div>
                         <h4>Localisation</h4>
@@ -381,8 +382,8 @@ function Footer() {
                         <h4>Contact</h4>
                         <p>contact@kartracer.fr</p>
                         <div className="reseaux">
-                            <FaFacebookSquare />
-                            <AiFillInstagram />
+                            <a href="https://www.facebook.com/people/Kart-Racer-Saran/100057433178868/?ref=ts#" target="_blank" rel="noopener noreferrer"><FaFacebookSquare /></a>
+                            <a href="https://www.instagram.com/kart_racer_saran/" target="_blank" rel="noopener noreferrer"><AiFillInstagram /></a>
                         </div>
                     </div>
                 </div>

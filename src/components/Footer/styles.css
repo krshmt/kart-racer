@@ -6,10 +6,6 @@
     margin: 1rem 2.5rem 0.5rem 2.5rem;
 }
 
-footer{
-    background-color: var(--light-background);
-}
-
 .footer-horaire{
     flex-basis: 55%;
     background-color: var(--main);
@@ -177,4 +173,9 @@ footer{
     .footer-horaire-map{
         margin: 1rem;
     }
+}
+
+.reseaux a, .footer-content a{
+    color: inherit;
+    text-decoration: none;
 }
