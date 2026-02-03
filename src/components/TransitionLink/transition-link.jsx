@@ -1,6 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { playExitFade } from "../../animations/page-transition";
+import { playExitFade, releaseScrollLock } from "../../animations/page-transition";
 
 const isModifiedClick = (event) =>
   event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
@@ -19,10 +19,13 @@ const getToPathname = (to) => {
   return normalizePathname(to?.pathname || "");
 };
 
+let lastResetPathname = null;
+
 const resetScrollPosition = () => {
   if (typeof window === "undefined") {
     return;
   }
+  releaseScrollLock({ restoreScroll: false });
   const lenis = window.lenis;
   if (lenis && typeof lenis.scrollTo === "function") {
     lenis.scrollTo(0, { immediate: true });
@@ -39,6 +42,10 @@ function TransitionLink({ to, onClick, children, ...rest }) {
 
   useLayoutEffect(() => {
     isTransitioningRef.current = false;
+    if (lastResetPathname === location.pathname) {
+      return;
+    }
+    lastResetPathname = location.pathname;
     resetScrollPosition();
   }, [location.pathname]);
 
