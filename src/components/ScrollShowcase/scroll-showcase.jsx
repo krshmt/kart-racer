@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
 import "./scroll-showcase.css";
 import StickyValue from "../StickyValue/sticky-value";
 import Copy from "../../animations/Copy";
@@ -40,15 +39,14 @@ export default function ScrollShowcase() {
 
   useEffect(() => {
     // 🔥 Lenis
-    const lenis = new Lenis();
-    const handleLenisScroll = () => ScrollTrigger.update();
-    const handleLenisRaf = (time) => {
-      lenis.raf(time * 1000);
-    };
+    ScrollTrigger.config({ ignoreMobileResize: true });
 
-    lenis.on("scroll", handleLenisScroll);
-    gsap.ticker.add(handleLenisRaf);
-    gsap.ticker.lagSmoothing(0);
+    const lenis = typeof window !== "undefined" ? window.lenis : null;
+    const handleLenisScroll = () => ScrollTrigger.update();
+
+    if (lenis && typeof lenis.on === "function") {
+      lenis.on("scroll", handleLenisScroll);
+    }
 
     const updateMoveDistance = () => {
       if (!titlesRef.current) return;
@@ -57,7 +55,13 @@ export default function ScrollShowcase() {
     };
     updateMoveDistance();
 
+    let lastWidth = window.innerWidth;
     const handleResize = () => {
+      const nextWidth = window.innerWidth;
+      if (nextWidth === lastWidth) {
+        return;
+      }
+      lastWidth = nextWidth;
       updateMoveDistance();
       ScrollTrigger.refresh();
     };
@@ -99,9 +103,10 @@ export default function ScrollShowcase() {
     const trigger = ScrollTrigger.create({
       trigger: stickyRef.current,
       start: "top top",
-      end: `+=${window.innerHeight * 5}px`,
+      end: () => `+=${window.innerHeight * 5}px`,
       pin: true,
       scrub: 1,
+      invalidateOnRefresh: true,
       onUpdate: (self) => {
         gsap.set(titlesRef.current, {
           x: -moveDistanceRef.current * self.progress,
@@ -166,9 +171,9 @@ export default function ScrollShowcase() {
     return () => {
       window.removeEventListener("resize", handleResize);
       trigger.kill();
-      gsap.ticker.remove(handleLenisRaf);
-      lenis.off("scroll", handleLenisScroll);
-      lenis.destroy();
+      if (lenis && typeof lenis.off === "function") {
+        lenis.off("scroll", handleLenisScroll);
+      }
     };
   }, []);
 

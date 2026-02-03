@@ -125,4 +125,12 @@
         flex-basis: 100%;
         margin: 0 1rem;
     }
+
+    .value-item{
+        padding: 0;
+    }
+
+    .value-item p{
+        margin-bottom: 0;
+    }
 }
