@@ -9,6 +9,16 @@
   width: 100%;
   overflow-x: hidden;
   font-family: "F37 Judge";
+  touch-action: pan-y;
+}
+
+.scroll-showcase .titles,
+.scroll-showcase .title,
+.scroll-showcase .title h1 {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .scroll-showcase .images img {
@@ -118,6 +128,12 @@
   transform-style: preserve-3d;
   will-change: transform;
   overflow: hidden;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .scroll-showcase .titles {
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 900px) {
