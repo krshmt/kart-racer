@@ -308,7 +308,6 @@ function Header() {
                                     <a href="http://" target="_blank" rel="noopener noreferrer">Facebook</a>
                                 </div>
                             </div>
-                            <div className="header-panel">Bloc 3</div>
                         </div>
                     </div>
                 </div>

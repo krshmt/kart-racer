@@ -169,4 +169,12 @@ footer{
     .shader{
         height: 10vh;
     }
+
+    .footer-horaire{
+        padding: 1.5rem;
+    }
+
+    .footer-horaire-map{
+        margin: 1rem;
+    }
 }

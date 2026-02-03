@@ -5,6 +5,99 @@ const DEFAULT_DURATION = 0.35;
 const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+let scrollLockState = null;
+
+const shouldLockScroll = () => {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return false;
+  }
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const noHover = window.matchMedia("(hover: none)").matches;
+  const smallScreen = window.matchMedia("(max-width: 900px)").matches;
+  return (coarsePointer && noHover) || smallScreen;
+};
+
+const getScrollTop = () =>
+  window.scrollY ||
+  document.documentElement.scrollTop ||
+  document.body.scrollTop ||
+  0;
+
+const lockScroll = () => {
+  if (typeof window === "undefined" || scrollLockState) {
+    return;
+  }
+  const body = document.body;
+  const root = document.documentElement;
+  if (!body || !root) {
+    return;
+  }
+  const scrollTop = getScrollTop();
+  scrollLockState = {
+    scrollTop,
+    bodyPosition: body.style.position,
+    bodyTop: body.style.top,
+    bodyLeft: body.style.left,
+    bodyRight: body.style.right,
+    bodyWidth: body.style.width,
+    bodyOverflow: body.style.overflow,
+    bodyHeight: body.style.height,
+    rootOverflow: root.style.overflow,
+    rootHeight: root.style.height,
+  };
+
+  body.style.position = "fixed";
+  body.style.top = `-${scrollTop}px`;
+  body.style.left = "0";
+  body.style.right = "0";
+  body.style.width = "100%";
+  body.style.overflow = "hidden";
+  body.style.height = "100%";
+  root.style.overflow = "hidden";
+  root.style.height = "100%";
+};
+
+export const releaseScrollLock = ({ restoreScroll = true } = {}) => {
+  if (typeof window === "undefined" || !scrollLockState) {
+    return;
+  }
+  const body = document.body;
+  const root = document.documentElement;
+  const {
+    scrollTop,
+    bodyPosition,
+    bodyTop,
+    bodyLeft,
+    bodyRight,
+    bodyWidth,
+    bodyOverflow,
+    bodyHeight,
+    rootOverflow,
+    rootHeight,
+  } = scrollLockState;
+
+  if (body) {
+    body.style.position = bodyPosition;
+    body.style.top = bodyTop;
+    body.style.left = bodyLeft;
+    body.style.right = bodyRight;
+    body.style.width = bodyWidth;
+    body.style.overflow = bodyOverflow;
+    body.style.height = bodyHeight;
+  }
+
+  if (root) {
+    root.style.overflow = rootOverflow;
+    root.style.height = rootHeight;
+  }
+
+  scrollLockState = null;
+
+  if (restoreScroll) {
+    window.scrollTo({ top: scrollTop, left: 0, behavior: "auto" });
+  }
+};
+
 const getPageContent = () => document.querySelector("[data-page-content]");
 const getBackgroundTargets = () => [document.documentElement, document.body];
 const TRANSITION_BG_DATA = "transitionBackground";
@@ -51,6 +144,10 @@ export const playExitFade = ({ duration = DEFAULT_DURATION, background } = {}) =
   if (!pageContent && !backgroundColor) {
     setPendingBackground(null);
     return Promise.resolve();
+  }
+
+  if (pageContent && shouldLockScroll()) {
+    lockScroll();
   }
 
   setPendingBackground(backgroundColor);
