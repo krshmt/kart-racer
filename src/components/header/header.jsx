@@ -279,7 +279,7 @@ function Header() {
                             <div className="header-panel">
                                 <p>NOS PAGES</p>
                                 <div>
-                                    <TransitionLink to="/description" onClick={handleNavClick}>
+                                    <TransitionLink to="/" onClick={handleNavClick}>
                                     Accueil
                                     </TransitionLink>
                                 </div>
